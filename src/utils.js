@@ -11,7 +11,7 @@ const headers = {
  * Generic POST request
  */
 async function call (host, path, data, agent) {
-  const resp = await nf(`${host}/${path}`, { agent, body: JSON.stringify(data), headers, method: 'POST' })
+  const resp = await nf.default(`${host}/${path}`, { agent, body: JSON.stringify(data), headers, method: 'POST' })
   let body = await resp.text()
   if (body.length === 0) return ''
   try {
@@ -104,6 +104,6 @@ function performTwosCompliment (buffer) {
 
 module.exports = {
   call: callbackify(call, 4),
-  callbackify,
-  mcHexDigest
+  callbackify: callbackify,
+  mcHexDigest: mcHexDigest
 }
