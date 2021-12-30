@@ -26,7 +26,9 @@ async function call (host, path, data, agent) {
           throw new Error('Your IP is banned by CloudFlare')
         }
       } else {
-        throw new Error(`Response is not JSON. Status code: ${resp.status ?? 'no status code'}`)
+        throw new Error(`Response is not JSON. \n 
+          Status code: ${resp.status ?? 'no status code'} \n 
+          response body: ${body}`)
       }
     } else {
       throw e
